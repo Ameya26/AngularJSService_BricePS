@@ -16,7 +16,7 @@
     };
     app.config(function ($provide, constants) {
 
-      console.log('title from the constants service : ' constants.APP_TITLE);
+      console.log('title from the constants service : ' +constants.APP_TITLE);
 
     });
   });
