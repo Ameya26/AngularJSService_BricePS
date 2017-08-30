@@ -24,7 +24,7 @@
     }
 
     function getAllDataError(reason) {
-      console.log(reason);
+      //console.log(reason);
     }
 
     // dataService.getAllBooks()

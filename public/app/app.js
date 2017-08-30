@@ -2,7 +2,7 @@
   'use strict';
 
   // Define a module here
-  var app = angular.module('app', []);
+  var app = angular.module('app', ['ngRoute']);
 
   app.provider('books', ['constants', function (constants) {
     this.$get = function () {
@@ -17,8 +17,25 @@
 
   }]);
 
-  app.config(['constants','dataServiceProvider', function ($provide, constants, dataServiceProvider) {
-    console.log('title from the constants service : ' + constants.APP_TITLE);
+  app.config(['booksProvider','$routeProvider', function (booksProvider, $routeProvider) {
+    //console.log('title from the constants service : ' + constants.APP_TITLE);
+
+    console.log($routeProvider);
+
+
+    $routeProvider
+      .when('/', {
+        templateUrl: 'app/templates/books.html',
+        controller: 'BooksController',
+        controllerAs: 'books'
+      })
+      .when('/AddBook', {
+        templateUrl: 'app/templates/addBook.html',
+        controller: 'AddBookController',
+        controllerAs: 'addBook'
+      });
+
+
   }]);
 
   // This is the Option 1
