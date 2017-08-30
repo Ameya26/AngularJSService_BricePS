@@ -2,18 +2,12 @@
   'use strict';
 
   angular.module('app')
-  .controller('EditBookController', ['$routeParams', 'dataService', EditBookController]);
+    .controller('EditBookController', ['$routeParams', 'books', EditBookController]);
 
-  function EditBookController($routeParams, dataService) {
+  function EditBookController($routeParams, books) {
     var vm = this;
-
-    dataService.getAllBooks()
-      .then(function (books) {
-
-        vm.currentBook = books.filter(function (item) {
-          return item.book_id == $routeParams.bookID;
-        })[0];
-        // console.log(vm.currentBook);
-      });
+    vm.currentBook = books.filter(function(item) {
+      return item.book_id == $routeParams.bookID;
+    })[0];
   }
 }());

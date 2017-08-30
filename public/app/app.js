@@ -37,12 +37,17 @@
       .when('/EditBook/:bookID', {
         templateUrl:'app/templates/editBook.html',
         controller:'EditBookController',
-        controllerAs:'bookEditor'
+        controllerAs:'bookEditor',
+        resolve: {
+          books: function (dataService) {
+            return dataService.getAllBooks();
+          }
+        }
       })
       .otherwise('/');
-
-
   }]);
+
+  
 
   // This is the Option 1
   // Services syntax using $provide.provider function
