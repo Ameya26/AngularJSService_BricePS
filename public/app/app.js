@@ -4,7 +4,7 @@
   // Define a module here
   var app = angular.module('app', []);
 
-  app.provider('books', function (constants) {
+  app.provider('books', ['constants', function (constants) {
     this.$get = function () {
             var appName = constants.APP_TITLE;
             var appDesc = constants.APP_DESCRIPTION;
@@ -14,10 +14,12 @@
               appDesc:appDesc
             };
     };
-    app.config(function ($provide, constants, dataServiceProvider) {
-      console.log('title from the constants service : ' + constants.APP_TITLE);
-    });
-  });
+
+  }]);
+
+  app.config(['constants','dataServiceProvider', function ($provide, constants, dataServiceProvider) {
+    console.log('title from the constants service : ' + constants.APP_TITLE);
+  }]);
 
   // This is the Option 1
   // Services syntax using $provide.provider function
