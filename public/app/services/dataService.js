@@ -16,19 +16,19 @@
           book_id:1,
           title:'Harry potter and deathly hallows',
           author:'J. K Rowling',
-          year_published: 2000
+          yearPublished: 2000
         },
         {
           book_id:2,
           title:'The Cat in the Hat',
           author:'Dr. Seuss',
-          year_published: 1997
+          yearPublished: 1997
         },
         {
           book_id:3,
           title:'Encyclopedia Brown, Boy Detective',
           author:'Donal J Sobol',
-          year_published: 1963
+          yearPublished: 1963
         }
       ];
 

@@ -20,7 +20,7 @@
   app.config(['booksProvider','$routeProvider', function (booksProvider, $routeProvider) {
     //console.log('title from the constants service : ' + constants.APP_TITLE);
 
-    console.log($routeProvider);
+    //console.log($routeProvider);
 
 
     $routeProvider
@@ -33,7 +33,13 @@
         templateUrl: 'app/templates/addBook.html',
         controller: 'AddBookController',
         controllerAs: 'addBook'
-      });
+      })
+      .when('/EditBook/:bookID', {
+        templateUrl:'app/templates/editBook.html',
+        controller:'EditBookController',
+        controllerAs:'bookEditor'
+      })
+      .otherwise('/');
 
 
   }]);
