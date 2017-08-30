@@ -2,18 +2,16 @@
   'use strict';
 
   angular.module('app')
-  .factory('dataService', dataService);
+  .factory('dataService', ['$q', '$timeout', dataService]);
 
-  dataService.$inject =['logger'];
-  function dataService(logger) {
+  function dataService($q, $timeout) {
     return {
       getAllBooks:getAllBooks,
       getAllReaders: getAllReaders
     };
 
     function getAllBooks() {
-      logger.output('Getting all books');
-      return [
+      var booksArray = [
         {
           book_id:1,
           title:'Harry potter and deathly hallows',
@@ -33,11 +31,30 @@
           year_published: 1963
         }
       ];
+
+      var deferred = $q.defer();
+
+      $timeout(function () {
+
+        var successful = true;
+        if (successful) {
+
+          deferred.notify('Gathering books.....');
+          deferred.notify('Almost done......');
+
+          deferred.resolve(booksArray);
+        } else {
+
+          deferred.reject('Error getting books..');
+
+        }
+      }, 1000);
+
+      return deferred.promise;
     }
 
     function getAllReaders() {
-      logger.output('Getting all readers');
-      return [
+      var readersArray = [
         {
           reader_id:1,
           name:'Marie',
@@ -57,6 +74,20 @@
           totalMinutesRead: 600
         }
       ];
+
+      var deffered = $q.defer();
+
+      $timeout(function () {
+        var successful = true;
+
+        if (successful) {
+          deffered.resolve(readersArray);
+        }else {
+          deffered.reject('Error while fetching authors ....');
+        }
+      }, 1500);
+
+      return deffered.promise;
     }
   }
 
