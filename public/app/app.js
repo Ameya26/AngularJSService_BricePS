@@ -14,10 +14,8 @@
               appDesc:appDesc
             };
     };
-    app.config(function ($provide, constants) {
-
-      console.log('title from the constants service : ' +constants.APP_TITLE);
-
+    app.config(function ($provide, constants, dataServiceProvider) {
+      console.log('title from the constants service : ' + constants.APP_TITLE);
     });
   });
 
